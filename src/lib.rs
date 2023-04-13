@@ -42,6 +42,7 @@ fn set_socket_dscp(fd:usize, dscp:u8) -> Option<WinError> {
     let raw_sock = SOCKET(fd);
     let mut flow_id = 0;
     let mut qos_handle = HANDLE(0);
+    let dscp_value = dscp as u32;
     let value_size = std::mem::size_of::<u32>();
     let qos_version = QOS_VERSION{ MajorVersion:1, MinorVersion:0 };
 
@@ -56,7 +57,7 @@ fn set_socket_dscp(fd:usize, dscp:u8) -> Option<WinError> {
             return extract_error_message("QOSAddSocketToFlow");
         }
 
-        if !QOSSetFlow(qos_handle,flow_id,QOSSetOutgoingDSCPValue as QOS_SET_FLOW,value_size as u32,&dscp as *const _ as *const _,0,None).as_bool() {
+        if !QOSSetFlow(qos_handle,flow_id,QOSSetOutgoingDSCPValue as QOS_SET_FLOW,value_size as u32,&dscp_value as *const _ as *const _,0,None).as_bool() {
             return extract_error_message("QOSSetFlow");
         }
     }

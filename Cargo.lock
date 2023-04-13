@@ -219,7 +219,7 @@ dependencies = [
 
 [[package]]
 name = "windows-dscp-fix"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "pyo3",
  "windows",
