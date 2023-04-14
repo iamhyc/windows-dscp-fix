@@ -4,11 +4,19 @@ build-backend = "maturin"
 
 [project]
 name = "windows-dscp-fix"
+description = "fix setsockopt behavior for ToS/DSCP on Windows."
+authors = [
+    { name = "sudo_free", email = "sudofree@163.com" }
+]
 requires-python = ">=3.7"
+keywords = ["windows", "network", "socket", "development", "tos", "dscp"]
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 
+[project.urls]
+"Homepage" = "https://github.com/iamhyc/windows-dscp-fix"
+"Bug Reports" = "https://github.com/iamhyc/windows-dscp-fix/issues"
 
